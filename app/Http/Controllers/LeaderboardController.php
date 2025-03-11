@@ -8,20 +8,29 @@ use Illuminate\Http\Request;
 
 class LeaderboardController extends Controller
 {
-    public function index(){
+    public function index() {
         $players = Player::orderByDesc('points')->get();
         $leaderboard = [];
-        $rank = 0;
-        $previousPoints = null;
-        foreach($players as $index => $player){
-            if($player->points !== $previousPoints){
-                $rank = $index + 1;
+        $rank = 1;
+        $previousPoints = null; 
+
+        foreach ($players as $index => $player) {
+            
+            if ($player->points !== $previousPoints) {
+                $rank = $index + 1; 
             }
-            $leaderboard[] = ['rank' => $rank, 'name' => $player->name, 'points' => $player->points];
+
+            
+            $leaderboard[] = [
+                'rank' => $rank,
+                'name' => $player->name,
+                'points' => $player->points
+            ];
             $previousPoints = $player->points;
         }
         return response()->json($leaderboard);
     }
+    
     public function saveMatch(Request $match){
         $match->validate([
             'winner' => 'required|string|exists:players,name',
