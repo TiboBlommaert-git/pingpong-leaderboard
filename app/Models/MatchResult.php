@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class MatchResult extends Model
 {
     use HasFactory;
-
+    protected $table = 'matches';
     protected $fillable = ['winner_id', 'loser_id', 'points_awarded'];
 
     public function winner()
