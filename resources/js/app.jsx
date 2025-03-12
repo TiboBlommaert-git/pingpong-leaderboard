@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     const [leaderboard, setLeaderboard] = useState([]);
@@ -19,7 +20,7 @@ function App() {
             })
             .catch((error) => {
                 console.error(
-                    "Er is een fout opgetreden bij het ophalen van de leaderboard:",
+                    "Error",
                     error
                 );
             });
@@ -32,7 +33,7 @@ function App() {
             })
             .catch((error) => {
                 console.error(
-                    "Er is een fout opgetreden bij het ophalen van de leaderboard:",
+                    "Error",
                     error
                 );
             });
@@ -48,12 +49,11 @@ function App() {
                     loser,
                 }
             );
-
             setMessage(response.data.message);
             setPointsAwarded(response.data.points_awarded);
             updateLeaderboard();
         } catch (error) {
-            console.error("Error saving match:", error);
+            console.error("Error", error);
             setMessage("There was an error saving the match.");
         }
     };
@@ -65,23 +65,30 @@ function App() {
             setNewPlayer(''); 
             updateLeaderboard();
         } catch (error) {
-            setMessage("Error adding player. The name might already exist.");
+            setMessage("Error");
         }
     };
 
     const handleDeletePlayer = async (id) => {
         if (!id) {
-            console.error("Error: Player ID is missing!");
+            console.error("Error: No ID");
             return;
         }
-    
         if (!window.confirm("Are you sure you want to delete this player?")) return;
-    
         try {
             await axios.delete(`http://localhost:8000/api/deletePlayer/${id}`);
             setLeaderboard(prev => prev.filter(player => player.id !== id));
         } catch (error) {
-            console.error("Error deleting player:", error);
+            console.error("Error", error);
+        }
+    };
+    const handleResetPoints = async () => {
+        if (!window.confirm("Are you sure you want to reset all players' points?")) return;
+        try {
+            await axios.post('http://localhost:8000/api/resetPoints');
+            updateLeaderboard(prev => prev.map(player => ({ ...player, points: 0 }))); 
+        } catch (error) {
+            console.error("Error", error);
         }
     };
 
@@ -126,14 +133,12 @@ function App() {
                     </div>
                     <button type="submit">Submit Match</button>
                 </form>
-
-                {message && <div>{message}</div>}
-                {pointsAwarded !== null && (
-                    <div>Points Awarded: {pointsAwarded}</div>
-                )}
             </div>
             <div>
                 <h2>Leaderboard</h2>
+                <button onClick={handleResetPoints}>
+                    Reset Points
+                </button>
                 <table border="1">
                     <thead>
                         <tr>
@@ -149,7 +154,7 @@ function App() {
                                 <td>{player.name}</td>
                                 <td>{player.points} ptn</td>
                                 <td>
-                                    <button onClick={() => handleDeletePlayer(player.id)}>❌ Delete</button>
+                                    <button onClick={() => handleDeletePlayer(player.id)}>Delete</button>
                                 </td>
                             </tr>
                         ))}
