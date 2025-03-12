@@ -8,6 +8,8 @@ function App() {
     const [loser, setLoser] = useState("");
     const [message, setMessage] = useState("");
     const [pointsAwarded, setPointsAwarded] = useState(null);
+    const [newPlayer, setNewPlayer] = useState('');
+
 
     useEffect(() => {
         axios
@@ -55,10 +57,30 @@ function App() {
             setMessage("There was an error saving the match.");
         }
     };
+    const handleAddPlayer = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:8000/api/addPlayer', { name: newPlayer });
+            setMessage(response.data.message);
+            setNewPlayer(''); 
+            updateLeaderboard();
+        } catch (error) {
+            setMessage("Error adding player. The name might already exist.");
+        }
+    };
 
     return (
         <div>
             <h1>🏓 Ping Pong Leaderboard</h1>
+            <div>
+                <h2>Add a new Player</h2>
+                <form onSubmit={handleAddPlayer}>
+                    <input type="text" value={newPlayer} onChange={(e) => setNewPlayer(e.target.value)} 
+                        placeholder="Enter player name" 
+                        required />
+                    <button type="submit">Add Player</button>
+                </form>
+            </div>
             <div>
                 <h2>Record a Match Result</h2>
                 <form onSubmit={handleSubmit}>
