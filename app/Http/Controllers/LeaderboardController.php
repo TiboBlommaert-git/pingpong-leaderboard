@@ -11,16 +11,16 @@ class LeaderboardController extends Controller
     public function index() {
         $players = Player::orderByDesc('points')->get();
         $leaderboard = [];
-        $rank = 1;
+        $rank = 0;
         $previousPoints = null; 
 
         foreach ($players as $index => $player) {
             
             if ($player->points !== $previousPoints) {
-                $rank = $index + 1; 
+                $rank += 1; 
             }
 
-            
+
             $leaderboard[] = [
                 'rank' => $rank,
                 'name' => $player->name,
