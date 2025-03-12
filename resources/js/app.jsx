@@ -69,6 +69,22 @@ function App() {
         }
     };
 
+    const handleDeletePlayer = async (id) => {
+        if (!id) {
+            console.error("Error: Player ID is missing!");
+            return;
+        }
+    
+        if (!window.confirm("Are you sure you want to delete this player?")) return;
+    
+        try {
+            await axios.delete(`http://localhost:8000/api/deletePlayer/${id}`);
+            setLeaderboard(prev => prev.filter(player => player.id !== id));
+        } catch (error) {
+            console.error("Error deleting player:", error);
+        }
+    };
+
     return (
         <div>
             <h1>🏓 Ping Pong Leaderboard</h1>
@@ -132,6 +148,9 @@ function App() {
                                 <td>{player.rank}</td>
                                 <td>{player.name}</td>
                                 <td>{player.points} ptn</td>
+                                <td>
+                                    <button onClick={() => handleDeletePlayer(player.id)}>❌ Delete</button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>

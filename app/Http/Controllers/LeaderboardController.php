@@ -23,6 +23,7 @@ class LeaderboardController extends Controller
 
             $leaderboard[] = [
                 'rank' => $rank,
+                'id' => $player->id,
                 'name' => $player->name,
                 'points' => $player->points
             ];

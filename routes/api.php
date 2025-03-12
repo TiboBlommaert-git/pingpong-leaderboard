@@ -13,6 +13,7 @@ Route::get('/user', function (Request $request) {
 Route::get('/leaderboard', [LeaderboardController::class, 'index']);
 Route::post('/matchResult', [LeaderboardController::class, 'saveMatch']);
 Route::post('/addPlayer', [PlayerController::class, 'addPlayer']);
+Route::delete('/deletePlayer/{id}', [PlayerController::class, 'deletePlayer']);
 
 
 

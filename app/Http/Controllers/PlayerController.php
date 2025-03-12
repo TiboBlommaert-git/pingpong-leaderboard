@@ -22,4 +22,17 @@ class PlayerController extends Controller
             'player' => $player
         ]);
     }
+    public function deletePlayer($id){
+        $player = Player::find($id);
+        if($player){
+            $player->delete();
+            return response()->json([
+                'message' => 'Player deleted successfully!'
+            ]);
+        }else{
+            return response()->json([
+                'error' => 'Player not found!'
+            ], 404);
+        }
+    }	
 }
