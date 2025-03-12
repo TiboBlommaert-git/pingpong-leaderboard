@@ -7,11 +7,69 @@ body{
     background-color: #3C3D37;
     width: 85vw;    
     border: none !important;
+    border-radius: .5rem;
+    margin: 2rem 0;
     &_item{
         border-bottom: .1rem #181C14 solid;
+        &-rank{
+            padding: 1rem 0 1rem 1rem;
+        }
     }
     &_button{
         background-color: transparent !important;
         border: none !important;
     }
+}
+
+.c-button{
+    background-color: #ECDFCC;
+    color: #3C3D37;
+    padding: .5rem;
+    border: none !important;
+    border-radius: .5rem;
+    &_reset{
+    }
+    &_match{
+        padding: 0.5rem;
+    }
+}
+
+.c-match{
+    margin-bottom: 3rem;
+}
+
+.c-form{
+    margin-bottom: 3rem;
+    &_input{
+        color: white ;
+        background-color: #697565;
+        border-radius: .5rem;
+        border: none !important;
+        padding: .5rem;
+        margin-right: 2rem;
+        &::placeholder{
+            color: white !important;
+        }
+        &-loser{
+            margin-left: 2rem;
+        }
+    }
+    &_label{
+        &-lose{
+            margin-left: 2.5rem;
+        }
+    }
+    &_item{
+        display: flex !important;
+        flex-flow: column;
+    }
+}
+
+.c-title{
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.c-result_tag{
+    margin-top: 2rem;
 }
