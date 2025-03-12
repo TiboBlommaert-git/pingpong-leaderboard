@@ -10,15 +10,20 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-    {
-        Schema::create('matches', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('winner_id')->constrained('players');
-            $table->foreignId('loser_id')->constrained('players');
-            $table->integer('points_awarded')->default(1);
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('matches', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('winner_id')
+            ->constrained('players')
+            ->onDelete('cascade'); // Cascading delete
+        $table->foreignId('loser_id')
+            ->constrained('players')
+            ->onDelete('cascade'); // Cascading delete
+        $table->integer('points_awarded')->default(1);
+        $table->timestamps();
+    });
+}
+
 
     /**
      * Reverse the migrations.

@@ -23,16 +23,13 @@ class PlayerController extends Controller
         ]);
     }
     public function deletePlayer($id){
-        $player = Player::find($id);
-        if($player){
-            $player->delete();
-            return response()->json([
-                'message' => 'Player deleted successfully!'
-            ]);
-        }else{
-            return response()->json([
-                'error' => 'Player not found!'
-            ], 404);
-        }
+    $player = Player::find($id);
+
+    if (!$player) {
+        return response()->json(['message' => 'Player not found'], 404);
+    }
+    // MatchResult::where('winner_id', $player->id)->orWhere('loser_id', $player->id)->delete();
+    $player->delete();
+    return response()->json(['message' => 'Player deleted successfully']);
     }	
 }

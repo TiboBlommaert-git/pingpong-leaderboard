@@ -1,0 +1,17 @@
+body{
+    background-color: #181C14;
+    color: white;
+}
+
+.c-tabel{
+    background-color: #3C3D37;
+    width: 85vw;    
+    border: none !important;
+    &_item{
+        border-bottom: .1rem #181C14 solid;
+    }
+    &_button{
+        background-color: transparent !important;
+        border: none !important;
+    }
+}
