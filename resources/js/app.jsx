@@ -31,7 +31,7 @@ function App() {
             <div className="d-flex justify-content-center c-title">
                 <div className="c-header">
                     <h1>🏓 Ping Pong Leaderboard 🏓</h1>
-                    <a href="/leaderboard">Leaderboard</a>
+                    <a href="/leaderboard" className="c-header_link">Leaderboard</a>
                 </div>
             </div>
             <MatchForm updateLeaderboard={updateLeaderboard} setMessage={setMessage} />

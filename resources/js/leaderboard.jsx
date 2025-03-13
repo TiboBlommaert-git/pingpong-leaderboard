@@ -26,7 +26,7 @@ function Leaderboard() {
             <div className="d-flex justify-content-center c-title">
                 <div className="c-header">
                 <h1>🏓 Ping Pong Leaderboard 🏓</h1>
-                <a href="/">Link</a>
+                <a href="/" className="c-header_link">Home</a>
                 </div>
             </div>
             <LeaderboardTable 
