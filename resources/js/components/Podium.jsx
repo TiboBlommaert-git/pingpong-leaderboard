@@ -7,11 +7,10 @@ const Podium = ({ players }) => {
             ? `http://localhost:8000/storage/${player.image}`
             : "storage/players/default-avatar.jpg";
     };
-    console.log(players);
     return (
         <div className="c-podium">
             <h2 className="c-podium_title">Podium</h2>
-            <div className=" d-flex">
+            <div className=" d-flex justify-content-evenly">
                 <div className="podium-2 c-podium_place c-podium_place-2">
                     <img
                         src={getImageUrl(players[1])}

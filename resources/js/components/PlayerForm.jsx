@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
 
-const PlayerForm = ({ updateLeaderboard, setMessage }) => {
+const PlayerForm = ({ updateLeaderboard }) => {
     const [newPlayer, setNewPlayer] = useState("");
     const [playerImage, setPlayerImage] = useState(null);
     const fileInputRef = useRef(null);
@@ -27,7 +27,6 @@ const PlayerForm = ({ updateLeaderboard, setMessage }) => {
             }
             updateLeaderboard();
         } catch (error) {
-            setMessage("Error adding player");
             console.error("Error adding player:", error);
         }
     };

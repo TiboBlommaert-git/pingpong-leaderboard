@@ -25,10 +25,11 @@ p{
         border: none !important;
     }
     &_img{
-        width: 15%;
-        flex-shrink: 0;
-        margin-left: 1rem;
+        width: 75px;  
+        height: 75px; 
+        object-fit: cover;
         border-radius: .5rem;
+        margin-left: 1rem;
     }
 }
 
@@ -38,9 +39,8 @@ p{
     padding: .5rem;
     border: none !important;
     border-radius: .5rem;
-    &_reset{
-    }
     &_match{
+        margin-top: 1.5rem;
         padding: 0.5rem;
     }
 }
@@ -74,6 +74,11 @@ p{
         display: flex !important;
         flex-flow: column;
     }
+    &_error{
+        color: red;
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
 }
 
 .c-title{
@@ -92,7 +97,9 @@ p{
         margin-bottom: 2rem;
     }
     &_img{
-        width: 25%;
+        width: 100px;  
+        height: 100px; 
+        object-fit: cover;
         border-radius: .5rem;
     }
     &_name{
@@ -102,9 +109,6 @@ p{
         display: flex;
         flex-flow: column;
         align-items: center;
-        &-1{
-            
-        }
         &-2{
             margin-top: 3rem;
         }
