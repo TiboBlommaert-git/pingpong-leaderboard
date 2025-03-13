@@ -11,7 +11,7 @@ import Podium from "./components/Podium";
 function App() {
     const [leaderboard, setLeaderboard] = useState([]);
     const [message, setMessage] = useState("");
-
+    const topPlayers = [...leaderboard].sort((a, b) => b.points - a.points).slice(0, 3);
     useEffect(() => {
         updateLeaderboard();
     }, []);
@@ -26,9 +26,6 @@ function App() {
                 console.error("Error", error);
             });
     };
-
-    const topPlayers = [...leaderboard].sort((a, b) => b.points - a.points).slice(0, 3);
-
     return (
         <div className="container">
             <div className="d-flex justify-content-center c-title">

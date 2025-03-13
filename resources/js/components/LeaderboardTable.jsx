@@ -23,6 +23,7 @@ const LeaderboardTable = ({ leaderboard, updateLeaderboard }) => {
         if (!window.confirm("Are you sure you want to reset all players' points?")) return;
         try {
             await axios.post("http://localhost:8000/api/resetPoints");
+            await axios.post("http://localhost:8000/api/deleteAllMatches");
             updateLeaderboard();
         } catch (error) {
             console.error("Error resetting points:", error);

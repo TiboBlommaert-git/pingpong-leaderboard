@@ -18,5 +18,7 @@ Route::delete('/deletePlayer/{id}', [PlayerController::class, 'deletePlayer']);
 Route::post('/resetPoints', function () {
     Player::query()->update(['points' => 0]);
 });
+Route::post('/deleteAllMatches', [LeaderboardController::class, 'deleteAllMatches']);
+
 
 

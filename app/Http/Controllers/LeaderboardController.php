@@ -57,4 +57,10 @@ class LeaderboardController extends Controller
             'points_awarded' => $points_awarded,
         ]);
     }
+    public function deleteAllMatches()
+    {
+        MatchResult::truncate();
+
+        return response()->json(['message' => 'All matches deleted successfully!']);
+    }
 }
