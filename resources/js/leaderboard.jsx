@@ -4,14 +4,9 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../sass/custom.scss";
 import LeaderboardTable from "./components/LeaderboardTable";
-import MatchForm from "./components/MatchForm";
-import PlayerForm from "./components/PlayerForm";
-import Podium from "./components/Podium"; 
 
-function App() {
+function Leaderboard() {
     const [leaderboard, setLeaderboard] = useState([]);
-    const [message, setMessage] = useState("");
-    const topPlayers = [...leaderboard].sort((a, b) => b.points - a.points).slice(0, 3);
     useEffect(() => {
         updateLeaderboard();
     }, []);
@@ -30,20 +25,18 @@ function App() {
         <div className="container">
             <div className="d-flex justify-content-center c-title">
                 <div className="c-header">
-                    <h1>🏓 Ping Pong Leaderboard 🏓</h1>
-                    <a href="/leaderboard">Leaderboard</a>
+                <h1>🏓 Ping Pong Leaderboard 🏓</h1>
+                <a href="/">Link</a>
                 </div>
             </div>
-            <MatchForm updateLeaderboard={updateLeaderboard} setMessage={setMessage} />
-            <PlayerForm updateLeaderboard={updateLeaderboard} setMessage={setMessage} />
-            {topPlayers.length === 3 && <Podium players={topPlayers} />}
             <LeaderboardTable 
                 leaderboard={leaderboard} 
                 updateLeaderboard={updateLeaderboard}
             />
-            {message && <p>{message}</p>}
         </div>
     );
 }
 
-ReactDOM.createRoot(document.getElementById("app")).render(<App />);
+ReactDOM.createRoot(document.getElementById("leaderboard")).render(<Leaderboard />);
+
+export default Leaderboard; 

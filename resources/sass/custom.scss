@@ -6,6 +6,12 @@ body{
 p{
     margin-bottom: 0;
 }
+.c-header{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .c-tabel{
     background-color: #3C3D37;
@@ -78,6 +84,9 @@ p{
         color: red;
         font-size: 0.9rem;
         margin-top: 5px;
+        &-loser{
+            margin-left: 2rem;
+        }
     }
 }
 

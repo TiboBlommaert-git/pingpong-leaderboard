@@ -57,7 +57,7 @@ const MatchForm = ({ updateLeaderboard }) => {
                             required
                             className="c-form_input c-form_input-loser"
                         />
-                        {errors.loser && <p className="c-form_error">{errors.loser[0]}</p>}
+                        {errors.loser && <p className="c-form_error c-form_error-loser">{errors.loser[0]}</p>}
                     </div>
                 </div>
                 <div className="">
