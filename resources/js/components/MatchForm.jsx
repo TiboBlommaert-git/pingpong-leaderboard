@@ -12,8 +12,9 @@ const MatchForm = ({ updateLeaderboard, setMessage }) => {
                 winner,
                 loser,
             });
-            setMessage(response.data.message);
             updateLeaderboard();
+            setWinner("");
+            setLoser("");
         } catch (error) {
             console.error("Error", error);
             setMessage("There was an error saving the match.");

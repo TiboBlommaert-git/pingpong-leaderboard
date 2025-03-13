@@ -25,7 +25,8 @@ class LeaderboardController extends Controller
                 'rank' => $rank,
                 'id' => $player->id,
                 'name' => $player->name,
-                'points' => $player->points
+                'points' => $player->points,
+                'image' => $player->image
             ];
             $previousPoints = $player->points;
         }

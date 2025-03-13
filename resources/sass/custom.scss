@@ -3,6 +3,10 @@ body{
     color: white;
 }
 
+p{
+    margin-bottom: 0;
+}
+
 .c-tabel{
     background-color: #3C3D37;
     width: 85vw;    
@@ -13,11 +17,18 @@ body{
         border-bottom: .1rem #181C14 solid;
         &-rank{
             padding: 1rem 0 1rem 1rem;
+            max-width: 100px;
         }
     }
     &_button{
         background-color: transparent !important;
         border: none !important;
+    }
+    &_img{
+        width: 15%;
+        flex-shrink: 0;
+        margin-left: 1rem;
+        border-radius: .5rem;
     }
 }
 
@@ -56,7 +67,7 @@ body{
     }
     &_label{
         &-lose{
-            margin-left: 2.5rem;
+            margin-left: 2rem;
         }
     }
     &_item{
@@ -72,4 +83,33 @@ body{
 
 .c-result_tag{
     margin-top: 2rem;
+}
+
+.c-podium{
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    &_title{
+        margin-bottom: 2rem;
+    }
+    &_img{
+        width: 25%;
+        border-radius: .5rem;
+    }
+    &_name{
+        font-size: 1.2rem;
+    }
+    &_place{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        &-1{
+            
+        }
+        &-2{
+            margin-top: 3rem;
+        }
+        &-3{
+            margin-top: 6rem;
+        }
+    }
 }

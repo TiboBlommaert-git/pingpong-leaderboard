@@ -10,7 +10,7 @@ class Player extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'name', 'points'];
+    protected $fillable = ['id', 'name', 'points', 'image'];
 
     public function matchesWon()
     {
